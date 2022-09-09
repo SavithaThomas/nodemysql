@@ -22,7 +22,7 @@ async function findDepartmentById(req, res) {
           "employeePhone",
           "employeeEmail",
         ],
-        required: true,
+        required: false,
       },
     ],
   });
@@ -47,7 +47,7 @@ async function addDepartment(req, res) {
   try {
     let data = req.body;
 
-    if (!data.deptId || !data.deptname) {
+    if (!data.departmentId || !data.departmentName) {
       res.json({ meassage: "Parameters are missing" });
     } else {
       let dept1 = await Department.findOne({
@@ -86,8 +86,8 @@ async function updateDepartment(req, res) {
     });
     if (dept1) {
       const upData = {
-        deptId: data.departmentId,
-        deptname: data.departmentName,
+        departmentId: data.departmentId,
+        departmentName: data.departmentName,
       };
       await Department.update(upData, {
         where: { departmentId: upData.departmentId },

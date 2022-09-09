@@ -12,6 +12,7 @@ async function viewEmployee(req, res) {
     let employee = await Employee.findOne({
       where: { employeeEmail: empEmail },
     });
+    console.log(employee);
     if (employee && employee.employeeTypeRoleId == 1) {
       let data = await Employee.findAll();
       res.json(data);
@@ -104,7 +105,7 @@ async function deleteEmployee(req, res) {
   console.log("body: ", req.body);
   try {
     await Employee.destroy({
-      where: { employeeEmaill: req.body.email },
+      where: { employeeEmail: req.body.email },
     });
     res
       .status(200)

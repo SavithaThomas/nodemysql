@@ -3,11 +3,11 @@ module.exports = (sequelize, Sequelize) => {
   const Department = sequelize.define(
     "Department",
     {
-      DepartmentId: {
+      departmentId: {
         primaryKey: true,
         type: Sequelize.STRING,
       },
-      DepartmentName: {
+      departmentName: {
         type: Sequelize.STRING,
       },
     },
